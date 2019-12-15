@@ -109,3 +109,16 @@ function calculateFuelForMass(mass) {
 
 // Part 1
 const result1 = masses.map(calculateFuelForMass).reduce((sum, mass) => sum + mass); // 3448043
+
+// Part 2
+function calculateFuelForMassAndFuel(mass) {
+  const fuel = calculateFuelForMass(mass);
+
+  if (fuel > 0) {
+    return fuel + calculateFuelForMassAndFuel(fuel);
+  } else {
+    return 0;
+  }
+}
+
+const result2 = masses.map(calculateFuelForMassAndFuel).reduce((sum, mass) => sum + mass); // 5169198 
